@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexis - CV & Portafolio</title>
+    <title>Alexis Nahuel Such (cosm3no1ne) - CV & Portafolio</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -12,6 +12,7 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-color: #334155;
+            --pulse-glow: rgba(56, 189, 248, 0.4);
         }
 
         body {
@@ -21,12 +22,16 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 850px;
             margin: 40px auto;
             padding: 20px;
+            flex: 1;
         }
 
         header {
@@ -51,6 +56,13 @@
             color: var(--text-main);
         }
 
+        .nickname {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-family: monospace;
+        }
+
         .subtitle {
             font-size: 1.2rem;
             color: var(--accent-color);
@@ -61,11 +73,28 @@
         .contact-info {
             font-size: 0.95rem;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .contact-info span {
             margin: 0 10px;
+        }
+
+        .social-links {
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
         }
 
         .btn-download {
@@ -168,12 +197,77 @@
             margin-bottom: 4px;
         }
 
+        /* Footer & Animated Button Styles */
+        footer {
+            background-color: #090d16;
+            border-top: 1px solid var(--border-color);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-landing {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-landing::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: all 0.6s;
+        }
+
+        .btn-landing:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px var(--pulse-glow);
+            border-color: #38bdf8;
+            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+        }
+
+        .btn-landing:hover::before {
+            left: 100%;
+        }
+
+        .btn-landing active {
+            transform: translateY(-1px);
+        }
+
         @media (max-width: 600px) {
             .item-header {
                 flex-direction: column;
                 gap: 5px;
             }
-            .contact-info span {
+            .contact-info span, .social-links a {
                 display: block;
                 margin: 5px 0;
             }
@@ -185,24 +279,29 @@
     <div class="container">
         <header>
             <img src="log2.png" alt="Alexis" class="profile-img">
-            <h1>Alexis</h1>
+            <h1>Alexis Nahuel Such</h1>
+            <div class="nickname">aka "cosm3no1de"</div>
             <div class="subtitle">Cybersecurity Analyst | DevSecOps & Flutter Developer</div>
+            
             <div class="contact-info">
                 <span>📍 General Artigas, Itapúa, Paraguay (Remoto)</span> | 
                 <span>📧 tu-email@ejemplo.com</span>
             </div>
-            <div class="contact-info">
-                <span>🔗 <a href="#" style="color: var(--accent-color);">LinkedIn</a></span> | 
-                <span>🔗 <a href="#" style="color: var(--accent-color);">GitHub</a></span> | 
-                <span>🎯 <a href="#" style="color: var(--accent-color);">Hack The Box</a></span>
+            
+            <div class="social-links">
+                <a href="https://linkedin.com/in/alexis-such" target="_blank">🔗 LinkedIn</a>
+                <a href="https://github.com/cosm3no1de" target="_blank">🐙 GitHub</a>
+                <a href="https://app.hackthebox.com/users/1633535" target="_blank">🎯 Hack The Box</a>
+                <a href="https://instagram.com/cosmenoide" target="_blank">📸 Instagram</a>
             </div>
+            
             <a href="cv-alexis.pdf" download class="btn-download">📥 Descargar CV en PDF</a>
         </header>
 
         <section id="perfil">
             <h2>🎯 Perfil Profesional</h2>
             <p style="margin: 0; text-align: justify; color: var(--text-muted);">
-                Analista de Ciberseguridad y Desarrollador con sólida formación práctica en pruebas de penetración (Pentesting), auditoría de redes y desarrollo de software seguro. Competidor activo en Hack The Box, actualmente ubicado en el Top 5% de la Season 11 (Puesto 590 de 11,000 participantes globales). Experiencia demostrable construyendo aplicaciones móviles seguras utilizando Flutter e integrando buenas prácticas de DevSecOps. Apasionado por la resolución de problemas complejos, automatización mediante scripts y el análisis profundo del tráfico de red.
+                Analista de Ciberseguridad y Desarrollador con sólida formación práctica en pruebas de penetración (Pentesting), auditoría de redes y desarrollo de software seguro. Competidor activo en Hack The Box, actualmente ubicado en el Top 5% de la Season 11 (Puesto 590 de 11,000 participantes globales bajo el alias <strong>Cosm3no1de</strong>). Experiencia demostrable construyendo aplicaciones móviles seguras utilizando Flutter e integrando buenas prácticas de DevSecOps. Apasionado por la resolución de problemas complejos, automatización mediante scripts y el análisis profundo del tráfico de red.
             </p>
         </section>
 
@@ -236,7 +335,7 @@
                     <span class="item-badge">Top 5% Global</span>
                 </div>
                 <ul>
-                    <li>Puesto #590 de más de 11,000 participantes activos en la Season 11 actual.</li>
+                    <li>Puesto #590 de más de 11,000 participantes activos en la Season 11 actual (Usuario: <strong>Cosm3no1de</strong>).</li>
                     <li>23 máquinas resueltas con éxito (entornos Linux y Windows).</li>
                     <li>4 Sherlocks (Investigación y respuesta a incidentes / defensa corporativa) y 5 Desafíos técnicos completados.</li>
                     <li>Documentación y publicación constante de write-ups técnicos en GitHub y LinkedIn enfocados en vectores de ataque y remediación.</li>
@@ -253,7 +352,7 @@
                     <span class="item-badge">Flutter & Security</span>
                 </div>
                 <p class="item-desc">
-                    Aplicación de mensajería diseñada y desarrollada bajo el enfoque de seguridad desde el diseño (Security by Design). Implementación de técnicas avanzadas como <strong>SSL Pinning</strong>, ofuscación de código fuente y almacenamiento local completamente encriptado para neutralizar ataques de ingeniería inversa y Man-in-the-Middle (MitM).
+                    Aplicación de mensajería diseñada y desarrollada bajo el enfoque de seguridad desde el diseño (Security by Design). Implementación avanzada de técnicas como <strong>SSL Pinning</strong>, ofuscación de código fuente y almacenamiento local completamente encriptado para neutralizar ataques de ingeniería inversa y Man-in-the-Middle (MitM).
                 </p>
             </div>
 
@@ -296,6 +395,13 @@
             </div>
         </section>
     </div>
+
+    <footer>
+        <div class="footer-text">© 2026 Alexis Nahuel Such - Desarrollado con enfoque en Seguridad</div>
+        <a href="https://cosm3no1de.github.io/wwwdata-cosm3/" target="_blank" class="btn-landing">
+            🌐 cosmenoide dev
+        </a>
+    </footer>
 
 </body>
 </html>
