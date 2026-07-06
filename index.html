@@ -1,3 +1,6 @@
+Aquí tienes el código actualizado. He eliminado la información de la Universidad Nacional de Moreno y he reestructurado la sección de **Educación y Certificaciones** para destacar tu formación práctica y continua en **Hack The Box**, **TryHackMe** y **freeCodeCamp**, manteniendo intacto todo el diseño y los efectos de la página.
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,272 +8,207 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexis Nahuel Such (cosm3no1ne) - CV & Portafolio</title>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-color: #38bdf8;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --pulse-glow: rgba(56, 189, 248, 0.4);
-        }
-
+        /* ===== Reset y Fuentes Profesionales ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: #0b0e14;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 255, 0, .05) 25%, rgba(0, 255, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, .05) 75%, rgba(0, 255, 0, .05) 76%, transparent 77%, transparent), 
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 0, .05) 25%, rgba(0, 255, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 0, .05) 75%, rgba(0, 255, 0, .05) 76%, transparent 77%, transparent),
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 0, 0.03) 0%, transparent 50%);
+            background-size: 50px 50px, 50px 50px, 100%, 100%;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            color: #c5c8c6;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
         }
 
+        /* ===== Advanced Command Interface Container ===== */
         .container {
             max-width: 850px;
-            margin: 40px auto;
-            padding: 20px;
-            flex: 1;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
+            width: 100%;
+            background: rgba(11, 14, 20, 0.85);
+            backdrop-filter: blur(15px);
+            border: 2px solid #1a1e28;
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 0 80px rgba(0, 255, 0, 0.08), inset 0 0 80px rgba(0, 255, 0, 0.03);
             position: relative;
+            flex: 1;
+            margin-bottom: 30px;
         }
 
-        .profile-img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-color);
-            object-fit: cover;
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        /* ===== Efectos de Glitch y Escaneo ===== */
+        @keyframes glitch {
+          0% { text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffff; transform: translate(0, 0); }
+          2% { text-shadow: -2px -2px 0 #ff00ff, 2px 2px 0 #00ffff; transform: translate(2px, 2px); }
+          4% { text-shadow: 2px -2px 0 #ff00ff, -2px 2px 0 #00ffff; transform: translate(-2px, -2px); }
+          6% { text-shadow: -2px 2px 0 #ff00ff, 2px -2px 0 #00ffff; transform: translate(2px, -2px); }
+          8% { text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffff; transform: translate(-2px, 2px); }
+          10% { text-shadow: none; transform: translate(0, 0); }
+          100% { text-shadow: none; transform: translate(0, 0); }
         }
+
+        @keyframes networkScan {
+          0% { transform: translateY(-100%); opacity: 0; }
+          50% { opacity: 0.15; }
+          100% { transform: translateY(100%); opacity: 0; }
+        }
+
+        .container::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: linear-gradient(180deg, transparent, rgba(0, 255, 0, 0.08), transparent);
+          animation: networkScan 6s ease-in-out infinite;
+          pointer-events: none;
+          border-radius: inherit;
+        }
+
+        /* ===== Portal del Logo (Perfil) ===== */
+        header { text-align: center; margin-bottom: 40px; position: relative; z-index: 1; }
+        
+        .portal-ring {
+          width: 140px; height: 140px;
+          border-radius: 50%;
+          border: 3px solid #2ecc71;
+          border-color: #2ecc71 transparent #00ffff transparent;
+          box-shadow: 0 0 50px rgba(46, 204, 113, 0.2), inset 0 0 30px rgba(0, 255, 255, 0.1);
+          margin: 0 auto 20px;
+          overflow: hidden;
+          display: flex; align-items: center; justify-content: center;
+          position: relative;
+        }
+        @keyframes ringPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
+        .portal-ring::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1); }
+        .logo-pulse { animation: ringPulse 2s ease-in-out infinite; width: 100%; height: 100%; border-radius: 50%; }
+        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
         h1 {
-            font-size: 2.2rem;
-            margin: 0 0 5px 0;
-            color: var(--text-main);
+            font-size: 2.8rem; color: #2ecc71;
+            letter-spacing: 2px; text-shadow: 0 0 30px rgba(46, 204, 113, 0.4);
+            margin-bottom: 5px; font-weight: 500;
+            animation: glitch 4s linear infinite 1s; display: inline-block;
         }
 
-        .nickname {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            font-family: monospace;
-        }
-
+        .nickname { font-size: 1.1rem; color: #7f8c8d; margin-bottom: 10px; letter-spacing: 1px; }
+        
         .subtitle {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            font-weight: 500;
-            margin-bottom: 15px;
+          font-size: 1.05rem; color: #e0e0e0; padding: 10px 0; display: inline-block; letter-spacing: 1.2px; border-top: 1px solid #1a1e28; border-bottom: 1px solid #1a1e28;
+          text-shadow: 0 0 10px rgba(127, 140, 141, 0.3);
+          margin-bottom: 15px;
         }
 
-        .contact-info {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
+        .contact-info { font-size: 0.9rem; color: #7f8c8d; margin-bottom: 20px; }
+        .contact-info span { margin: 0 10px; color: #b0b0b0; }
 
-        .contact-info span {
-            margin: 0 10px;
-        }
-
-        .social-links {
-            margin-bottom: 25px;
-        }
-
+        /* ===== Social Links (Console Panel Style) ===== */
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
         .social-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: 500;
-            transition: color 0.2s;
+            color: #7f8c8d; font-size: 0.95rem; transition: 0.3s; text-decoration: none;
+            display: inline-flex; align-items: center; padding: 8px 16px; border-radius: 30px; border: 1px solid #1e2a36; background: rgba(18, 24, 31, 0.5);
         }
+        .social-links a:hover { color: #2ecc71; border-color: #2ecc71; background: rgba(46, 204, 113, 0.08); transform: translateY(-3px); box-shadow: 0 0 20px rgba(46, 204, 113, 0.1); }
 
-        .social-links a:hover {
-            color: #7dd3fc;
-            text-decoration: underline;
-        }
-
-        .btn-download {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #0f172a;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.2s, background-color 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-download:hover {
-            transform: translateY(-2px);
-            background-color: #7dd3fc;
-        }
-
+        /* ===== Sections & Data Nodes ===== */
         section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            background: #12181f;
+            border: 1px solid #1e2a36;
+            border-radius: 14px;
             padding: 25px;
             margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        section:hover {
+            border-color: rgba(46, 204, 113, 0.3);
+            box-shadow: 0 0 30px rgba(46, 204, 113, 0.05);
         }
 
         h2 {
             font-size: 1.4rem;
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
+            color: #2ecc71;
+            border-bottom: 1px solid #1a1e28;
+            padding-bottom: 12px;
             margin-top: 0;
             margin-bottom: 20px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .skills-category strong {
-            display: block;
-            color: var(--text-main);
-            margin-bottom: 5px;
-        }
-
-        .skills-category p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .achievement-item, .project-item {
-            margin-bottom: 20px;
-        }
-
-        .achievement-item:last-child, .project-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 5px;
-        }
-
-        .item-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--text-main);
-        }
-
-        .item-badge {
-            background-color: var(--border-color);
-            color: var(--accent-color);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2::before { content: '>_ '; color: #7f8c8d; }
+
+        p { color: #c5c8c6; font-size: 0.95rem; text-align: justify; }
+
+        /* ===== Skills Grid ===== */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .skills-category {
+            background: rgba(11, 14, 20, 0.5);
+            border-left: 2px solid #2ecc71;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        .skills-category strong { display: block; color: #e0e0e0; margin-bottom: 8px; font-size: 1.05rem; }
+        .skills-category p { margin: 0; color: #7f8c8d; font-size: 0.85rem; }
+
+        /* ===== Items (Achievements, Projects) ===== */
+        .achievement-item, .project-item { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #1a1e28; }
+        .achievement-item:last-child, .project-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+        
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; flex-wrap: wrap; gap: 10px;}
+        .item-title { font-weight: 500; font-size: 1.15rem; color: #e0e0e0; transition: color 0.2s; }
+        .project-item:hover .item-title { color: #2ecc71; }
+
+        /* ===== Badges ===== */
+        .item-badge {
+            background: #1e2a36; padding: 4px 12px; border-radius: 30px; font-size: 0.75rem; color: #b0b0b0; border: 1px solid #2c3e50; letter-spacing: 0.5px;
         }
 
-        .item-desc {
-            margin: 5px 0 0 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            text-align: justify;
+        .item-desc { margin: 5px 0 0 0; color: #7f8c8d; }
+        ul { margin: 10px 0 0 0; padding-left: 20px; color: #c5c8c6; font-size: 0.95rem; }
+        li { margin-bottom: 8px; }
+        li::marker { color: #2ecc71; }
+        strong { color: #2ecc71; font-weight: normal; }
+
+        /* ===== Buttons ===== */
+        .btn-download, .btn-landing {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: transparent; color: #2ecc71; padding: 12px 24px; border-radius: 8px;
+            text-decoration: none; font-weight: 500; font-size: 0.95rem; letter-spacing: 0.5px;
+            border: 1px solid #2ecc71; transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.1);
+            position: relative; z-index: 1; overflow: hidden;
+        }
+        .btn-download:hover, .btn-landing:hover {
+            background: rgba(46, 204, 113, 0.1);
+            box-shadow: 0 0 25px rgba(46, 204, 113, 0.3);
+            transform: translateY(-2px);
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
         }
 
-        ul {
-            margin: 5px 0 0 0;
-            padding-left: 20px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        li {
-            margin-bottom: 4px;
-        }
-
-        /* Footer & Animated Button Styles */
+        /* ===== Footer ===== */
         footer {
-            background-color: #090d16;
-            border-top: 1px solid var(--border-color);
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: auto;
+            width: 100%; text-align: center; margin-top: 20px; padding: 30px 20px;
+            border-top: 1px solid #1a1e28; position: relative;
         }
-
-        .footer-text {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .btn-landing {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
-            color: #ffffff;
-            padding: 12px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(56, 189, 248, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-landing::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            transition: all 0.6s;
-        }
-
-        .btn-landing:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px var(--pulse-glow);
-            border-color: #38bdf8;
-            background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
-        }
-
-        .btn-landing:hover::before {
-            left: 100%;
-        }
-
-        .btn-landing active {
-            transform: translateY(-1px);
-        }
+        .footer-text { color: #4a5555; font-size: 0.85rem; margin-bottom: 20px; letter-spacing: 0.8px; }
+        .cursor { display: inline-block; width: 12px; height: 3px; background: #2ecc71; animation: blink 1.2s step-end infinite; vertical-align: middle; margin-left: 6px; box-shadow: 0 0 10px rgba(46, 204, 113, 0.3); }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         @media (max-width: 600px) {
-            .item-header {
-                flex-direction: column;
-                gap: 5px;
-            }
-            .contact-info span, .social-links a {
-                display: block;
-                margin: 5px 0;
-            }
+            .container { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .portal-ring { width: 110px; height: 110px; }
+            .item-header { flex-direction: column; }
+            .contact-info span { display: block; margin: 5px 0; }
         }
     </style>
 </head>
@@ -278,7 +216,12 @@
 
     <div class="container">
         <header>
-            <img src="log2.png" alt="Alexis" class="profile-img">
+            <div class="portal-ring">
+                <div class="logo-pulse logo">
+                    <img src="log2.png" alt="Alexis" class="profile-img">
+                </div>
+            </div>
+            
             <h1>Alexis Nahuel Such</h1>
             <div class="nickname">aka "cosm3no1de"</div>
             <div class="subtitle">Cybersecurity Analyst | DevSecOps & Flutter Developer</div>
@@ -291,22 +234,22 @@
             <div class="social-links">
                 <a href="https://linkedin.com/in/alexis-such" target="_blank">🔗 LinkedIn</a>
                 <a href="https://github.com/cosm3no1de" target="_blank">🐙 GitHub</a>
-                <a href="https://app.hackthebox.com/users/Cosm3no1de" target="_blank">🎯 Hack The Box</a>
-                <a href="https://instagram.com/cosmenoide" target="_blank">📸 Instagram</a>
+                <a href="https://app.hackthebox.com/users/Cosm3no1de" target="_blank">⬢ Hack The Box</a>
+                <a href="https://instagram.com/cosmenoide" target="_blank">📷 Instagram</a>
             </div>
             
             <a href="cv-alexis.pdf" download class="btn-download">📥 Descargar CV en PDF</a>
         </header>
 
         <section id="perfil">
-            <h2>🎯 Perfil Profesional</h2>
-            <p style="margin: 0; text-align: justify; color: var(--text-muted);">
+            <h2>Perfil Profesional</h2>
+            <p>
                 Analista de Ciberseguridad y Desarrollador con sólida formación práctica en pruebas de penetración (Pentesting), auditoría de redes y desarrollo de software seguro. Competidor activo en Hack The Box, actualmente ubicado en el Top 5% de la Season 11 (Puesto 590 de 11,000 participantes globales bajo el alias <strong>Cosm3no1de</strong>). Experiencia demostrable construyendo aplicaciones móviles seguras utilizando Flutter e integrando buenas prácticas de DevSecOps. Apasionado por la resolución de problemas complejos, automatización mediante scripts y el análisis profundo del tráfico de red.
             </p>
         </section>
 
         <section id="habilidades">
-            <h2>🛠 Habilidades Técnicas</h2>
+            <h2>Habilidades Técnicas</h2>
             <div class="skills-grid">
                 <div class="skills-category">
                     <strong>Cybersecurity & Pentest</strong>
@@ -328,7 +271,7 @@
         </section>
 
         <section id="logros">
-            <h2>🏆 Logros Destacados en Ciberseguridad</h2>
+            <h2>Logros Destacados en Ciberseguridad</h2>
             <div class="achievement-item">
                 <div class="item-header">
                     <span class="item-title">Hack The Box (HTB) — Jugador Competitivo</span>
@@ -344,7 +287,7 @@
         </section>
 
         <section id="proyectos">
-            <h2>💻 Proyectos Destacados</h2>
+            <h2>Proyectos Destacados</h2>
             
             <div class="project-item">
                 <div class="item-header">
@@ -356,7 +299,7 @@
                 </p>
             </div>
 
-            <div class="project-item" style="margin-top: 15px;">
+            <div class="project-item">
                 <div class="item-header">
                     <span class="item-title">Shun Neones — E-Commerce & SysAdmin</span>
                     <span class="item-badge">Flutter & Hardening</span>
@@ -366,7 +309,7 @@
                 </p>
             </div>
 
-            <div class="project-item" style="margin-top: 15px;">
+            <div class="project-item">
                 <div class="item-header">
                     <span class="item-title">Cosm3No1de-WifiTool & Scripts de Red</span>
                     <span class="item-badge">Python & Flutter</span>
@@ -378,26 +321,39 @@
         </section>
 
         <section id="educacion">
-            <h2>📚 Educación y Certificaciones</h2>
+            <h2>Educación y Certificaciones</h2>
+            
             <div class="achievement-item">
                 <div class="item-header">
-                    <span class="item-title">Ingeniería Electrónica</span>
-                    <span class="item-badge">En Curso</span>
+                    <span class="item-title">Hack The Box (HTB) Academy & Labs</span>
+                    <span class="item-badge">Activo / Avanzado</span>
                 </div>
-                <p class="item-desc" style="margin: 0;">Universidad Nacional de Moreno (UNM)</p>
+                <p class="item-desc">Formación continua en ciberseguridad ofensiva, resolución de laboratorios prácticos y caminos de aprendizaje (Paths) enfocados en Pentesting y escalada de privilegios.</p>
             </div>
-            <div class="achievement-item" style="margin-top: 15px;">
+
+            <div class="achievement-item">
+                <div class="item-header">
+                    <span class="item-title">TryHackMe</span>
+                    <span class="item-badge">Completado / Activo</span>
+                </div>
+                <p class="item-desc">Entrenamiento estructurado en fundamentos de seguridad, redes, explotación de vulnerabilidades y defensa (Módulos de Blue y Red Team).</p>
+            </div>
+
+            <div class="achievement-item">
                 <div class="item-header">
                     <span class="item-title">freeCodeCamp Certifications</span>
                     <span class="item-badge">Completado</span>
                 </div>
-                <p class="item-desc" style="margin: 0;">Diseño Web Responsivo (Especialización en accesibilidad, arquitectura limpia y maquetación CSS).</p>
+                <p class="item-desc">Diseño Web Responsivo (Especialización en accesibilidad, arquitectura limpia y maquetación CSS).</p>
             </div>
         </section>
     </div>
 
     <footer>
-        <div class="footer-text">© 2026 Alexis Nahuel Such - Desarrollado con enfoque en Seguridad</div>
+        <div class="footer-text">
+            © 2026 Alexis Nahuel Such - Desarrollado con enfoque en Seguridad
+            <span class="cursor"></span>
+        </div>
         <a href="https://cosm3no1de.github.io/wwwdata-cosm3/" target="_blank" class="btn-landing">
             🌐 cosmenoide dev
         </a>
@@ -405,3 +361,5 @@
 
 </body>
 </html>
+
+```
